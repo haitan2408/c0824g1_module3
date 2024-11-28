@@ -1,0 +1,11 @@
+h1 {
+    /*important ghi đè lên tất cả CSS*/
+    color: blue !important;
+}
+h1:hover {
+    font-size: 500px;
+}
+button:hover {
+    background-color: blue !important;
+    color: white;
+}
