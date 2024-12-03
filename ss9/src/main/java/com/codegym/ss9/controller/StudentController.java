@@ -31,6 +31,11 @@ public class StudentController extends HttpServlet {
             case "add":
                 req.getRequestDispatcher("WEB-INF/view/student/add.jsp").forward(req, resp);
                 break;
+            case "remove":
+                int id = Integer.parseInt(req.getParameter("id"));
+                iStudentService.remove(id);
+                resp.sendRedirect("/students");
+                break;
             default:
                 List<Student> students = iStudentService.getAll();
                 req.setAttribute("students", students);

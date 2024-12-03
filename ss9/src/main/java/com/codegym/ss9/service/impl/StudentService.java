@@ -26,7 +26,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void remove(int id) {
-
+        studentRepository.remove(id);
     }
 
     @Override

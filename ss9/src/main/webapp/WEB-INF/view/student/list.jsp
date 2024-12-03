@@ -68,7 +68,30 @@
                     <td>${student.dob}</td>
                     <td>
                         <button class="btn btn-warning">Update</button>
-                        <button class="btn btn-danger">Remove</button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal${student.id}">Remove</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal${student.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete student</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you want to delete this student has name is ${student.name}?
+                                        <div style="color: red; font-style: italic">
+                                            This action cannot be undone!
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary"  onclick="window.location.href='/students?action=remove&id=${student.id}'">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
