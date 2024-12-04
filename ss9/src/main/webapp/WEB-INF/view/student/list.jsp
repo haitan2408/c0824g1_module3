@@ -54,6 +54,7 @@
             <th>Email</th>
             <th>Point</th>
             <th>DOB</th>
+            <th>Class</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -66,6 +67,8 @@
                     <td>${student.email}</td>
                     <td>${student.point}</td>
                     <td>${student.dob}</td>
+                    <td>${student.nameClass}</td>
+
                     <td>
                         <button class="btn btn-warning">Update</button>
                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal${student.id}">Remove</button>

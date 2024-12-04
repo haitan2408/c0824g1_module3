@@ -1,33 +1,25 @@
-package com.codegym.ss9.model;
+package com.codegym.ss9.dto;
 
 import java.time.LocalDate;
 
-public class Student {
+public class StudentDTO {
     private Integer id;
     private String name;
     private String email;
     private Float point;
     private LocalDate dob;
-    private Integer idClass;
+    private String nameClass;
 
-    public Student() {
+    public StudentDTO() {
     }
 
-    public Student(Integer id, String name, String email, Float point, LocalDate dob, Integer idClass) {
+    public StudentDTO(Integer id, String name, String email, Float point, LocalDate dob, String nameClass) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.point = point;
         this.dob = dob;
-        this.idClass = idClass;
-    }
-
-    public Student(String name, String email, Float point, LocalDate dob, Integer idClass) {
-        this.name = name;
-        this.email = email;
-        this.point = point;
-        this.dob = dob;
-        this.idClass = idClass;
+        this.nameClass = nameClass;
     }
 
     public Integer getId() {
@@ -70,11 +62,11 @@ public class Student {
         this.dob = dob;
     }
 
-    public Integer getIdClass() {
-        return idClass;
+    public String getNameClass() {
+        return nameClass;
     }
 
-    public void setIdClass(Integer idClass) {
-        this.idClass = idClass;
+    public void setNameClass(String nameClass) {
+        this.nameClass = nameClass;
     }
 }

@@ -1,7 +1,10 @@
 package com.codegym.ss9.controller;
 
+import com.codegym.ss9.dto.StudentDTO;
 import com.codegym.ss9.model.Student;
+import com.codegym.ss9.service.IClassroomService;
 import com.codegym.ss9.service.IStudentService;
+import com.codegym.ss9.service.impl.ClassroomService;
 import com.codegym.ss9.service.impl.StudentService;
 
 import javax.servlet.ServletException;
@@ -18,7 +21,8 @@ import java.util.List;
 
 @WebServlet(name = "studentController", urlPatterns = "/students")
 public class StudentController extends HttpServlet {
-    private static IStudentService iStudentService = new StudentService();
+    private static final IStudentService iStudentService = new StudentService();
+    private static final IClassroomService iClassroomService = new ClassroomService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +33,7 @@ public class StudentController extends HttpServlet {
         }
         switch (action) {
             case "add":
+                req.setAttribute("classrooms", iClassroomService.getAll());
                 req.getRequestDispatcher("WEB-INF/view/student/add.jsp").forward(req, resp);
                 break;
             case "remove":
@@ -37,7 +42,7 @@ public class StudentController extends HttpServlet {
                 resp.sendRedirect("/students");
                 break;
             default:
-                List<Student> students = iStudentService.getAll();
+                List<StudentDTO> students = iStudentService.getAllDTO();
                 req.setAttribute("students", students);
                 req.getRequestDispatcher("WEB-INF/view/student/list.jsp").forward(req, resp);
                 break;
@@ -67,7 +72,8 @@ public class StudentController extends HttpServlet {
                 } catch (DateTimeParseException e) {
                     System.out.println("Lỗi");
                 }
-                Student student = new Student(name, email, point, datetime);
+                Integer idClass = Integer.valueOf(req.getParameter("classroom"));
+                Student student = new Student(name, email, point, datetime, idClass);
                 iStudentService.save(student);
                 resp.sendRedirect("/students");
                 break;

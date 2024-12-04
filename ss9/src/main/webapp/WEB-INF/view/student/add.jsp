@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>Student</title>
@@ -45,7 +46,7 @@
     <form method="post">
         <div class="mb-3">
             <label for="inputName" class="form-label">Name</label>
-            <input type="text" class="form-control" name="name" id="inputName">
+            <input type="text" class="form-control" name="name" id="inputName" required maxlength="100" pattern="^[a-zA-Z ]+$">
         </div>
         <div class="mb-3">
             <label for="inputEmail" class="form-label">Email</label>
@@ -53,11 +54,19 @@
         </div>
         <div class="mb-3">
             <label for="inputPoint" class="form-label">Point</label>
-            <input type="number" class="form-control" name="point" id="inputPoint" >
+            <input type="number" class="form-control" name="point" id="inputPoint" min="0" max="100">
         </div>
         <div class="mb-3">
             <label for="inputDOB" class="form-label">DOB</label>
-            <input type="date" class="form-control" name="dob" id="inputDOB" >
+            <input type="date" class="form-control" name="dob" id="inputDOB"  >
+        </div>
+        <div class="mb-3">
+            <label for="classname" class="form-label">DOB</label>
+            <select id="classname" name="classroom" class="form-control">
+               <c:forEach var="classroom" items="${classrooms}">
+                   <option value="${classroom.id}">${classroom.nameClass}</option>
+               </c:forEach>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

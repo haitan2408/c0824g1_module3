@@ -1,5 +1,6 @@
 package com.codegym.ss9.service.impl;
 
+import com.codegym.ss9.dto.StudentDTO;
 import com.codegym.ss9.model.Student;
 import com.codegym.ss9.repository.StudentRepository;
 import com.codegym.ss9.service.IStudentService;
@@ -11,7 +12,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> getAll() {
-        return studentRepository.findAll();
+        return null;
     }
 
     @Override
@@ -37,5 +38,10 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> findByName(String name) {
         return null;
+    }
+
+    @Override
+    public List<StudentDTO> getAllDTO() {
+        return studentRepository.findAll();
     }
 }
